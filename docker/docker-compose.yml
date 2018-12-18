@@ -1,0 +1,15 @@
+version: '2'
+services:
+    hazmit_db:
+      image: mdillon/postgis:10
+      # https://docs.docker.com/compose/compose-file/#restart
+      restart: always
+      container_name: static_hazmit_db
+      ports:
+        - "6543:5432"
+      volumes:
+        - ./pgdata:/var/lib/postgresql/data/pgdata
+        - ./host_mnt:/host_mnt
+      env_file: "../config/postgres.docker.env"
+      environment:
+        - PGDATA=/var/lib/postgresql/data/pgdata
