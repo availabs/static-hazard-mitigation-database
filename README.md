@@ -1,4 +1,6 @@
-# Configuring the Database
+# static-hazard-mitigation-database
+
+## Configuring the Database
 
 ```
 cd config
@@ -7,21 +9,27 @@ cp postgres.docker.env.template postgres.docker.env
 
 Open postgres.docker.env and change the POSTGRES_PASSWORD
 
-# Starting the Container and Database
+---
+
+## Starting the Container and Database
 
 ```
 cd docker
 ./up.sh
 ```
 
-# Stopping the Container and Database
+---
+
+## Stopping the Container and Database
 
 ```
 cd docker
 ./down.sh
 ```
 
-# Loading the SQL dump of the original database
+---
+
+## Loading the SQL dump of the original database
 
 Note: the docker/host_mnt directory is mounted by the container
 and is available within the container as /host_mnt. This is the place
@@ -38,7 +46,9 @@ su postgres
 ./restore-hazmit.sh <Path in container to the compressed SQL backup>
 ``` 
 
-# Creating the `static_hazmit_readonly user`
+---
+
+## Creating the `static_hazmit_readonly user`
 
 1. Create a copy of the createReadOnlyUser.sql.template script
 ```
@@ -72,7 +82,9 @@ Execute the createReadOnlyUser SQL script.
 \i /host_mnt/createReadOnlyUser.sql
 ```
 
-# Configure remote access to the database
+---
+
+## Configure remote access to the database
 
 1. Open `docker/pgdata/pg_hba.conf`
 
