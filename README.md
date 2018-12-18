@@ -32,7 +32,7 @@ cd docker
 ## Loading the SQL dump of the original database
 
 Note: the `docker/host_mnt directory` is mounted by the container
-and is available within the container as /host_mnt. This is the place
+and is available within the container as `/host_mnt`. This is the place
 to put any scripts or data that you will need within the container.
 
 ```
